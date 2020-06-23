@@ -11,6 +11,6 @@ For bug reports, questions or comments please contact Javier Vargas (jvargas@fis
 
 [1] S. Kaur, J. Gomez-Blanco, A. Khalifa, S. Adinarayanan, R. Sanchez-Garcia, D. Wrapp, J. S. McLellan, K. H. Bui, J. Vargas, Local computational methods to improve the interpretability and analysis of cryo-EM maps, bioRxiv https://doi.org/10.1101/2020.05.11.088013
 
-[2] https://mcgill-my.sharepoint.com/:u:/r/personal/javier_vargasbalbuena_mcgill_ca/Documents/LocSpiral-LocBSharpen-LocBFactor-LocOccupancy/Examples.zip?csf=1&web=1&e=mDEkZZ
+[2] https://mcgill-my.sharepoint.com/:u:/g/personal/javier_vargasbalbuena_mcgill_ca/EViU56bKLflDjg0N2gfQzAIBCzmWG7sMDjx1wPEtabWfuw?e=FDBG8B
 
-[3] https://mcgill-my.sharepoint.com/:u:/r/personal/javier_vargasbalbuena_mcgill_ca/Documents/LocSpiral-LocBSharpen-LocBFactor-LocOccupancy/Results.zip?csf=1&web=1&e=2cAxF2
+[3] https://mcgill-my.sharepoint.com/:u:/g/personal/javier_vargasbalbuena_mcgill_ca/ERl72DDZ0T9Nr561_2QxaoABzS6ClE4gFdNPR5RvOCGRNw?e=cKlqpO
