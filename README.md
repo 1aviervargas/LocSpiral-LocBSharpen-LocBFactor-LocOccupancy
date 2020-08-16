@@ -14,3 +14,9 @@ For bug reports, questions or comments please contact Javier Vargas (jvargas@fis
 [2] https://mcgill-my.sharepoint.com/:u:/g/personal/javier_vargasbalbuena_mcgill_ca/EViU56bKLflDjg0N2gfQzAIBCzmWG7sMDjx1wPEtabWfuw?e=FDBG8B
 
 [3] https://mcgill-my.sharepoint.com/:u:/g/personal/javier_vargasbalbuena_mcgill_ca/ERl72DDZ0T9Nr561_2QxaoABzS6ClE4gFdNPR5RvOCGRNw?e=cKlqpO
+
+1. System requirements:
+The code provided in the 'Code' folder requires Matlab to be run. We have tested the code on Matlab's versions 2018a, 2018b and 2019a running in Windows 10 and Linux (Ubuntu 16.04). This software requires Matlab´s Parallel Computing toolbox if parallel acceleration is desired. To run the methods proposed here it is not required any non-standard hardware.
+
+2. Installation guide:
+To use the proposed approaches copy the files of the 'Code folder to your local machine at your desired destination. No compilation is required so the install time on a "normal" desktop computer is zero, taking into account that Matlab is already installed. Examples of use of the proposed methods can be found in [2].
