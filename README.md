@@ -11,9 +11,9 @@ For bug reports, questions or comments please contact Javier Vargas (jvargas@fis
 
 [1] S. Kaur, J. Gomez-Blanco, A. Khalifa, S. Adinarayanan, R. Sanchez-Garcia, D. Wrapp, J. S. McLellan, K. H. Bui, J. Vargas, Local computational methods to improve the interpretability and analysis of cryo-EM maps, bioRxiv https://doi.org/10.1101/2020.05.11.088013
 
-[2] https://mcgill-my.sharepoint.com/:u:/g/personal/javier_vargasbalbuena_mcgill_ca/EViU56bKLflDjg0N2gfQzAIBCzmWG7sMDjx1wPEtabWfuw?e=FDBG8B
+[2] https://ucomplutense-my.sharepoint.com/:u:/g/personal/jvargas_ucm_es/EVLwYwr79CBGr2Zb2jJ2IP8B_pGNiPQW88l7g7n8YsyKww?e=pe7ohc
 
-[3] https://mcgill-my.sharepoint.com/:u:/g/personal/javier_vargasbalbuena_mcgill_ca/ERl72DDZ0T9Nr561_2QxaoABzS6ClE4gFdNPR5RvOCGRNw?e=cKlqpO
+[3] https://ucomplutense-my.sharepoint.com/:u:/g/personal/jvargas_ucm_es/EVWy68RWyllJo3LuyLlG4uAB00yWwR3tV2iadK5_qUUUqw?e=Lbixdp
 
 1. System requirements:
 
