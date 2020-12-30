@@ -28,11 +28,17 @@ WriteMRC(map,1.699,'locSpiralMap.mrc');
 WriteMRC(map,1.699,'bfactorSharpenMap.mrc');
 
 %% local Bfactor estimation - 1
-[AMap BMap noise Mod resSquare] = locBFactor(vol,mask,1.699,15,4.25,10,0.9,6);
+[AMap BMap noise Mask Mod resSquare] = locBFactor(vol,mask,1.699,15,4.25,10,0.9,8,1);
+% We filter noise B-factors imposing a value of 0 (currently they are Nan which causes problems in Chimera)
+BMap(~Mask)=0;
+AMap(~Mask)=0;
 WriteMRC(BMap*4,1.699,'bfactorMap-1.mrc');
 WriteMRC(AMap,1.699,'AMap-1.mrc');
 
-[AMap BMap noise Mod resSquare] = locBFactor(vol,mask,1.699,20,10,10,0.9,6);
+[AMap BMap noise Mask Mod resSquare] = locBFactor(vol,mask,1.699,20,10,10,0.9,8,1);
+% We filter noise B-factors imposing a value of 0 (currently they are Nan which causes problems in Chimera)
+BMap(~Mask)=0;
+AMap(~Mask)=0;
 WriteMRC(BMap*4,1.699,'bfactorMap-2.mrc');
 WriteMRC(AMap,1.699,'AMap-2.mrc');
 
