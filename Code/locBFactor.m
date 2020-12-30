@@ -1,4 +1,4 @@
-function [AMap BMap noise Mod resSquare] = localBFactor(map,mask,pixel_size,minRes,maxRes,numPoints,threshold,bw)
+function [AMap BMap noise mask Mod resSquare] = localBFactor(map,mask,pixel_size,minRes,maxRes,numPoints,threshold,bw,filter)
 
 %localBFactor - method to obtain the local B-factors of a cryo-EM map
 %
@@ -33,6 +33,11 @@ function [AMap BMap noise Mod resSquare] = localBFactor(map,mask,pixel_size,minR
 %   heterogeneous distributions of resolutions, or worse global resolution, 
 %   values between 6-8 provide excellents results.
 %
+%   filter: 1 (true) does not take into consideration points in each local
+%   Guinier plot that are below the noise level to calculate B-factors; 
+%   if 0 (false) is selected, all points of each local Guinier plot are taken into 
+%   consideration (default).
+%
 %   OUTPUT PARAMETERS:
 %   AMap: local values of the logarithm of structure factors amplitudes at 
 %   15 Å
@@ -42,6 +47,9 @@ function [AMap BMap noise Mod resSquare] = localBFactor(map,mask,pixel_size,minR
 %
 %   noise: logarithm of the noise amplitude structure factor at the
 %   different squared resolutions given by resSquare.
+%
+%   mask: Updated solvent binary map with points that have a  calculated 
+%   local B-factor.
 %
 %   Mod: logarithm of structure factors amplitudes at different squared
 %   resolutions given by resSquare.
@@ -182,20 +190,50 @@ for i=1:numPoints
     Cref = m./(m+q);
     %Amplitude map at the corresponding frequency
     Mod(:,:,:,i) = log(Cref.*m.*sqrt(size(map,1)^3));
-
     meanLogAmp(i) = log(sqrt(size(map,1)^3)*sum(m(:)));
 
 end
 
 sizeCube = size(Mod);
 z = 1;
-V = bsxfun(@power,resSquare',0:z);
 
-A = pinv(V'*V)*(V)';
+if (nargin < 9)
+    filter = 0
+end
 
-polyCube = A*reshape(permute((Mod),[4 1 2 3]),sizeCube(4),[]);
-polyCube = reshape(polyCube,[2 sizeCube(1) sizeCube(2) sizeCube(3)]);
-polyCube = permute(polyCube,[2 3 4 1]);
+if (filter)
+    Mat = reshape(permute((Mod),[4 1 2 3]),sizeCube(4),[]);
+    polyCube = zeros(2,length(Mat));
+    mask = reshape(mask,1,length(Mat));
+    
+    parfor i=1:length(Mat)
+        pMat = Mat(:,i);
+        imask = pMat > noise';
+        
+        if (sum(imask)<2)
+           polyCube(:,i) = [nan;nan];
+           mask(i) = 0;
+           continue; 
+        end
+        
+        V = bsxfun(@power,resSquare(imask)',0:z);
+        A = pinv(V'*V)*(V)';
+        polyCube(:,i) = A*pMat(imask);
+    end
+    
+    polyCube = reshape(polyCube,[2 sizeCube(1) sizeCube(2) sizeCube(3)]);
+    polyCube = permute(polyCube,[2 3 4 1]);
+    mask = reshape(mask,[sizeCube(1) sizeCube(2) sizeCube(3)]);
+
+
+else
+    V = bsxfun(@power,resSquare',0:z);
+    A = pinv(V'*V)*(V)';
+    polyCube = A*reshape(permute((Mod),[4 1 2 3]),sizeCube(4),[]);
+    polyCube = reshape(polyCube,[2 sizeCube(1) sizeCube(2) sizeCube(3)]);
+    polyCube = permute(polyCube,[2 3 4 1]);
+    
+end
 
 AMap = squeeze(polyCube(:,:,:,1));
 BMap = squeeze(polyCube(:,:,:,2));
