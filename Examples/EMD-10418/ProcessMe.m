@@ -26,7 +26,7 @@ WriteMRC(map,0.82,'locSpiralMap.mrc');
 WriteMRC(M,0.82,'bfactorSharpenMap.mrc');
 
 %% local Bfactor estimation
-[AMap BMap noise Mod resSquare] = locBFactor(vol,mask,0.82,15,2.96,10,0.9,4.8);
+[AMap BMap noise Mask Mod resSquare] = locBFactor(vol,mask,0.82,15,2.96,10,0.9,4.8);
 WriteMRC(BMap*4,0.82,'bfactorMap.mrc');
 WriteMRC(AMap,0.82,'AMap.mrc');
 
